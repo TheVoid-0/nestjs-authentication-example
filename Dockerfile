@@ -27,5 +27,5 @@ COPY --from=development /home/app/dist ./dist
 
 EXPOSE 3002
 
-CMD ["npm", "run", "start:prod"];
+CMD ["npm", "run", "start:deploy"];
 

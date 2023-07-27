@@ -6,6 +6,7 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nestjs_authentication_example
     ports:
       - '5432:5432'
   authentication_api:
