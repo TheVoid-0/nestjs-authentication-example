@@ -12,7 +12,7 @@ export class LoginController {
   @Post()
   async login(@Res({ passthrough: true }) request: Response, @Body() loginDto: LoginDto) {
     try {
-      return await this.loginService.login(loginDto.email, loginDto.password);
+      return await this.loginService.login(loginDto.emailOrMobilePhone, loginDto.password);
     } catch (error) {
       if (error instanceof UserNotActiveError) {
         request.redirect(`${this.environment.API_URL}/users/confirm-account`);
@@ -23,8 +23,8 @@ export class LoginController {
   }
 
   @Post('forgot-password')
-  async forgotPassword(@Body('email') email: string) {
-    await this.loginService.forgotPassword(email);
+  async forgotPassword(@Body('emailOrMobilePhone') emailOrMobilePhone: string) {
+    await this.loginService.forgotPassword(emailOrMobilePhone);
 
     return {
       message: 'If the email exists, a message will be sent with instructions to reset your password',

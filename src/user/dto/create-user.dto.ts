@@ -1,14 +1,17 @@
-import { IsEmail, IsString, IsStrongPassword } from 'class-validator';
+import { IsEmail, IsString, IsStrongPassword, IsNotEmpty } from 'class-validator';
 import { UserEntity } from '../domain/entities/user.entity';
 
 export class CreateUserDto {
   @IsString()
+  @IsNotEmpty()
   name: string;
 
   @IsEmail()
+  @IsNotEmpty()
   @IsString()
   email: string;
 
+  @IsNotEmpty()
   @IsString()
   mobilePhone: string;
 

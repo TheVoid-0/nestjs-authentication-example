@@ -16,8 +16,8 @@ export class LoginService {
     private readonly environment: Environment,
   ) {}
 
-  async login(email: string, password: string) {
-    const user = await this.userService.findByEmail(email);
+  async login(emailOrMobilePhone: string, password: string) {
+    const user = await this.userService.findByEmailOrMobilePhone(emailOrMobilePhone);
 
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
@@ -48,8 +48,8 @@ export class LoginService {
     return { token };
   }
 
-  async forgotPassword(email: string) {
-    const user = await this.userService.findByEmail(email);
+  async forgotPassword(emailOrMobilePhone: string) {
+    const user = await this.userService.findByEmailOrMobilePhone(emailOrMobilePhone);
 
     if (!user) {
       return;

@@ -21,7 +21,7 @@ export class UserService {
   ) {}
 
   async create(user: UserEntity) {
-    const existingUser = await this.userRepository.findByEmail(user.email);
+    const existingUser = await this.userRepository.findByEmailOrMobilePhone(user.email);
 
     if (existingUser) {
       throw new BadRequestException('User email already in use');
@@ -68,8 +68,8 @@ export class UserService {
     return this.userRepository.findById(id);
   }
 
-  findByEmail(email: string): Promise<UserEntity | null> {
-    return this.userRepository.findByEmail(email);
+  findByEmailOrMobilePhone(emailOrMobilePhone: string): Promise<UserEntity | null> {
+    return this.userRepository.findByEmailOrMobilePhone(emailOrMobilePhone);
   }
 
   async sendUserConfirmationEmail(user: UserEntity) {
@@ -82,7 +82,7 @@ export class UserService {
       template: `
           <h1>Account confirmation</h1>
           <p>Hi ${user.name}, please confirm your account by clicking on the link below:</p>
-          <a href="${this.environment.API_URL}/confirm-account?code=${confirmationCode}">Confirm account</a>
+          <a href="${this.environment.API_URL}/users/confirm-account?code=${confirmationCode}">Confirm account</a>
           
           or use the code below: 
           <h3>${confirmationCode}</h3>

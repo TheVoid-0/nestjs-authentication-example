@@ -8,8 +8,8 @@ import { Repository } from 'typeorm';
 export class UserTypeormRepository implements UserRepository {
   constructor(@InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity>) {}
 
-  findByEmail(email: string): Promise<UserEntity | null> {
-    return this.userRepository.findOneBy({ email });
+  findByEmailOrMobilePhone(emailOrMobilePhone: string): Promise<UserEntity | null> {
+    return this.userRepository.findOneBy([{ email: emailOrMobilePhone }, { mobilePhone: emailOrMobilePhone }]);
   }
 
   findById(id: number): Promise<UserEntity> {

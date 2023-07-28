@@ -9,7 +9,7 @@ export class StartingTables1690456995736 implements MigrationInterface {
         { name: 'name', type: 'varchar', length: '255' },
         { name: 'email', type: 'varchar', length: '255', isUnique: true },
         { name: 'password', type: 'varchar', length: '255' },
-        { name: 'mobile_phone', type: 'varchar', length: '255' },
+        { name: 'mobile_phone', type: 'varchar', length: '255', isUnique: true },
         { name: 'is_active', type: 'boolean', default: false },
         { name: 'created_at', type: 'timestamp', default: 'now()' },
         { name: 'updated_at', type: 'timestamp', default: 'now()' },
