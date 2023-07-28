@@ -18,13 +18,19 @@ export class UserService {
     private readonly mailService: MailService,
     private readonly environment: Environment,
     private readonly logger: Logger,
-  ) {}
+  ) { }
 
   async create(user: UserEntity) {
-    const existingUser = await this.userRepository.findByEmailOrMobilePhone(user.email);
+    const existingUserEmail = await this.userRepository.findByEmailOrMobilePhone(user.email);
 
-    if (existingUser) {
+    if (existingUserEmail) {
       throw new BadRequestException('User email already in use');
+    }
+
+    const existingUserMobile = await this.userRepository.findByEmailOrMobilePhone(user.mobilePhone);
+
+    if (existingUserMobile) {
+      throw new BadRequestException('User mobile phone already in use');
     }
 
     user.password = await this.passwordService.hashPassword(user.password);
