@@ -13,4 +13,9 @@ Então rode o comando abaixo para subir o banco de dados e o servidor.
 ```bash
 docker-compose up -d
 ```
-Agora é só utilizar o insomnia ou postman para testar as rotas. Para o postman pode utilizar esse [link](https://www.postman.com/science-administrator-24509478/workspace/common-public/collection/17378299-61324e23-61c5-407f-8367-cbbd7ac904e1?action=share&creator=17378299)
+ou
+```bash
+docker-compose up -d --build
+```
+
+Para testar as rotas, importe o arquivo nestjs-authentication-example.postman_collection.json pelo [postman](https://postman.com)
