@@ -19,3 +19,8 @@ docker-compose up -d --build
 ```
 
 Para testar as rotas, importe o arquivo nestjs-authentication-example.postman_collection.json pelo [postman](https://postman.com)
+
+## Visualizando os e-mails
+
+Se o projeto for inicializado utilizando o servidor SMTP do mailgun, só será possível enviar e-mails para os endereços cadastrados dentro da plataforma. 
+Portanto utilize o e-mail amanda-frizzera@tuamaeaquelaursa.com e visualize os envios através desse [link](https://tuamaeaquelaursa.com/amanda-frizzera)
